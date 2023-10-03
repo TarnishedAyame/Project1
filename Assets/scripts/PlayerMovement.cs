@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    [SerializeField] private AudioSource collectsoundeffect;
+
     private Rigidbody2D rb;
     float XMove;
-    float yMove;
+    //float yMove;
     public float speed = 100;
 
     public GameManager gameManager;
@@ -15,17 +18,20 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         XMove = Input.GetAxisRaw("Horizontal");
-        yMove = Input.GetAxisRaw("Vertical");
+        //yMove = Input.GetAxisRaw("Vertical");
     }
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(XMove, yMove) * (speed * Time.deltaTime);
+        rb.velocity = new Vector2(XMove,0) * (speed * Time.deltaTime);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -33,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
        
         if (collision.gameObject.tag == "Memes")
         {
+            collectsoundeffect.Play();
             Destroy(collision.gameObject);
 
             gameManager.AddScore();
