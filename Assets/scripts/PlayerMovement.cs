@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 public class PlayerMovement : MonoBehaviour
 {
 
     [SerializeField] private AudioSource collectsoundeffect;
+    
+
+
+
 
     private Rigidbody2D rb;
     float XMove;
@@ -13,14 +18,13 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 100;
 
     public GameManager gameManager;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
         
-
     }
 
     // Update is called once per frame
@@ -45,7 +49,16 @@ public class PlayerMovement : MonoBehaviour
             gameManager.AddScore();
             // Code is specific to collision with enemies
         }
+        if (collision.gameObject.tag == "Shadow Realm Jimbo");
+        {
+            print("debug");
+        }
+        
+            
 
-        print("Collision Triggered" + collision.gameObject.name);
+            
+           
+
+        
     }
 }

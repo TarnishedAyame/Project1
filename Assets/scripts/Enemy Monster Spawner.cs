@@ -11,6 +11,7 @@ public class EnemyMonsterSpawner : MonoBehaviour
     void Start()
     {
         InvokeRepeating("SpawnEnemy", 1, 3);
+        
     }
 
     // Update is called once per frame
